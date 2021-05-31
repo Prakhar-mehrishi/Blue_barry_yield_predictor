@@ -72,24 +72,8 @@ print("MAE %2.f" %(metrics.mean_absolute_error(y_test,y_pred)))
 from sklearn import metrics
 print("RMSE %2.f" %(np.sqrt(metrics.mean_absolute_error(y_test,y_pred))))
 
-import pickle
-print("[INFO] Saving model...")
-saved_model=pickle.dump(model1,open('/content/drive/My Drive/rm_model.pkl', 'wb'))
 
-model = pickle.load(open('/content/drive/My Drive/rm_model.pkl','rb'))  
-# Load the pickled model 
-#Dec_from_pickle = pickle.loads(saved_model) 
-  
-# Use the loaded pickled model to make predictions 
-model.predict(X_test)
 
-import joblib
-filename = '/content/drive/My Drive/random.sav'
-joblib.dump(model, filename)
- 
-# some time later...
- 
-# load the model from disk
 loaded_model = joblib.load(filename)
 result = loaded_model.score(X_test, y_test)
 print(result)
@@ -114,15 +98,7 @@ seeds = 30.88504716#@param {type:"number"}
 output= model1.predict([[clonesize,honeybee,bumbles,andrena, osmia, MaxOfUpperTRange, MinOfUpperTRange,AverageOfUpperTRange,MaxOfLowerTRange,MinOfLowerTRange,AverageOfLowerTRange, RainingDays,AverageRainingDays,fruitset,fruitmass,seeds]])
 print("yield score:", output)
 
-!pip install streamlit
 
-# Mounting Google Drive
-from google.colab import drive
-drive.mount('/content/drive')
-
-!pip install pyngrok
-
-!ngrok authtoken 1sU6x13yZdrrriEUXNhkFkpKzQH_2PvSmEmcvPtqzeeXmWNbw
 
 # Commented out IPython magic to ensure Python compatibility.
 # %%writefile app.py
@@ -196,11 +172,5 @@ drive.mount('/content/drive')
 # if __name__=='__main__':
 #   main()
 
-!nohup streamlit run  app.py &
 
-from pyngrok import ngrok
-url=ngrok.connect(port='8050')
-url
-
-!streamlit run --server.port 80 app.py
 
