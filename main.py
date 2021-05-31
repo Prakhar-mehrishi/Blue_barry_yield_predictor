@@ -15,7 +15,6 @@ import pandas as pd
 
 
 dataset= pd.read_csv('WildBlueberryPollinationSimulationData.csv')
-print(dataset)
 
 
 
