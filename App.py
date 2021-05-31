@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 st.set_option('deprecation.showfileUploaderEncoding', False)
 # Load the pickled model
-model = pickle.load(open('/content/drive/My Drive/rm_model.pkl', 'rb'))
-dataset= pd.read_csv('/content/drive/My Drive/WildBlueberryPollinationSimulationData.csv',)
+model = pickle.load(open('rm_model.pkl', 'rb'))
+dataset= pd.read_csv('WildBlueberryPollinationSimulationData.csv',)
 X = dataset.iloc[:, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]].values
 def predict_note_authentication(clonesize,honeybee,bumbles,andrena,osmia, MaxOfUpperTRange,MinOfUpperTRange,AverageOfUpperTRange,MaxOfLowerTRange,MinOfLowerTRange,AverageOfLowerTRange,RainingDays,AverageRainingDays,fruitset,fruitmass,seeds):
   output= model.predict([[clonesize,honeybee,bumbles,andrena,osmia, MaxOfUpperTRange,MinOfUpperTRange,AverageOfUpperTRange,MaxOfLowerTRange,MinOfLowerTRange,AverageOfLowerTRange,RainingDays,AverageRainingDays,fruitset,fruitmass,seeds]])
